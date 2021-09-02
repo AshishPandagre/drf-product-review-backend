@@ -4,6 +4,8 @@ from reviews.views import ProductViewSet, ImageViewSet
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.schemas import get_schema_view
+from django.views.generic import TemplateView
 
 
 router = DefaultRouter()
@@ -14,6 +16,14 @@ urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('auth/', include('auth.urls')),
 	path('', include(router.urls)),
+	path('openapi/', get_schema_view(
+		title="Product Review Backend",
+		description="A product review backend based on django rest framework, complete with image uploading, filtersets, and auth system with JWT and swagger UI documentation."
+	), name='openapi-schema'),
+	path('docs/', TemplateView.as_view(
+		template_name='documentation.html',
+		extra_context={'schema_url':'openapi-schema'}
+	), name='swagger-ui'),
 ]
 
 if settings.DEBUG:
