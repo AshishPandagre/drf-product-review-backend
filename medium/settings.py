@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 	'versatileimagefield',
 	'reviews',
 	'rest_framework_swagger',
+	'drf_yasg',
+	# 'rest_framework.authtoken',
 ]
 
 
@@ -164,4 +166,14 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
 	'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
 	'ROTATE_REFRESH_TOKENS': True,
+}
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
 }
