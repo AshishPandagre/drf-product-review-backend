@@ -15,7 +15,7 @@ This project is based on django and django rest framework.
 ## Usage
 
 ```
-git clone https://github.com/AshishPandagre/better-blog.git
+git clone https://github.com/AshishPandagre/drf-product-review-backend.git
 cd better-blog
 python manage.py createsuperuser [enter details]
 python manage.py runserver
